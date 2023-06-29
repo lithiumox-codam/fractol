@@ -6,23 +6,11 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 15:00:19 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 22:05:08 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/29 22:16:43 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-// static double	calculate_iterations(t_data *data)
-// {
-// 	double	max_iter;
-
-// 	max_iter = data->zoom.level * 50;
-// 	if (max_iter >= MAX_ITER)
-// 		max_iter = MAX_ITER;
-// 	if (max_iter < 1)
-// 		max_iter = 30;
-// 	return (max_iter);
-// }
 
 /**
  * @brief Calculates the new x and y values
@@ -77,8 +65,6 @@ double	iter_julia(double x0, double y0, t_data *data)
 	double	last_y;
 	double	mag_sq;
 
-	// double	max_iter;
-	// max_iter = calculate_iterations(data);
 	iteration = -1;
 	last_x = x0;
 	last_y = y0;
