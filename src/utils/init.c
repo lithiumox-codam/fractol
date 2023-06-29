@@ -6,15 +6,21 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 12:40:30 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/29 22:11:16 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+// calculate the real and imaginary part of the complex number from a constant provided by the user in the form of an integer
+static double	calculate_complex(int t_data data)
+{
+	data.complex.i =
+	data.complex.r = 0;
+}
+
 static void	construct(t_data *data)
 {
-	data->iter = 0;
 	data->x.min = -2.0;
 	data->x.max = 1.5;
 	data->y.min = -1.5;
@@ -23,22 +29,20 @@ static void	construct(t_data *data)
 	data->color[G] = 1;
 	data->color[B] = 1;
 	data->zoom.factor = 1.0;
-	data->zoom.x = 0.0;
-	data->zoom.y = 0.0;
 	data->zoom.level = 3;
-	data->mouse.x = 0.0;
-	data->mouse.y = 0.0;
 	data->renderer.changed = true;
 	data->renderer.frames = 20;
-	data->complex.r = -0.7;
-	data->complex.i = 0.27015;
+	if (data->frctl == MANDELBROT)
+	{
+		data->complex.r = -0.7;
+		data->complex.i = 0.27015;
+	}
 }
 
 static void	parse_argv(int ac, char **av, t_data *data)
 {
-	ft_printf("argc: %c\n", av[1][0]);
 	if (ac == 1)
-		err("Usage: ./fractol [fractal] [constant (optional)]", data);
+		err("Usage -> ./fractol [fractal] [constant (optional)]", data);
 	if (ft_strcmp(av[1], "mandelbrot") == 0 && ac == 2)
 		data->frctl = MANDELBROT;
 	else if (ft_strcmp(av[1], "julia") == 0 && ac == 3)
@@ -46,11 +50,10 @@ static void	parse_argv(int ac, char **av, t_data *data)
 		data->frctl = JULIA;
 		data->complex.r = ft_atod(av[2]);
 		data->complex.i = ft_atod(av[3]);
-		ft_printf("Constant: %f + %fi\n", data->complex.r, data->complex.i);
-		ft_printf("Fractal: %d\n", data->frctl);
 	}
 	else
 		err("Usage: ./fractol [fractal] [constant (optional)]", data);
+	ft_printf("%d\n", __LINE__);
 	ft_printf("Fractal: %d\n", data->frctl);
 	construct(data);
 	init_color_palette(data);

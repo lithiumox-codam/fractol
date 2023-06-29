@@ -6,22 +6,32 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 15:00:19 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 12:37:35 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/29 22:05:08 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-static double	calculate_iterations(t_data *data)
-{
-	double	max_iter;
+// static double	calculate_iterations(t_data *data)
+// {
+// 	double	max_iter;
 
-	max_iter = data->zoom.level * 50;
-	if (max_iter < 1)
-		max_iter = 1;
-	return (max_iter);
-}
+// 	max_iter = data->zoom.level * 50;
+// 	if (max_iter >= MAX_ITER)
+// 		max_iter = MAX_ITER;
+// 	if (max_iter < 1)
+// 		max_iter = 30;
+// 	return (max_iter);
+// }
 
+/**
+ * @brief Calculates the new x and y values
+ *
+ * @param x0 The x coordinate of the pixel
+ * @param y0 The y coordinate of the pixel
+ * @param c_r The real part of the constant
+ * @param c_i The imaginary part of the constant
+ */
 static void	calculate_new_values(double *x0, double *y0, double c_r, double c_i)
 {
 	double	x;
@@ -33,6 +43,16 @@ static void	calculate_new_values(double *x0, double *y0, double c_r, double c_i)
 	*y0 = 2 * x * y + c_i;
 }
 
+/**
+ * @brief Checks if the current x and y values are the same as the last ones
+ *
+ * @param x0 The x coordinate of the pixel
+ * @param y0 The y coordinate of the pixel
+ * @param last_x The last x coordinate of the pixel
+ * @param last_y The last y coordinate of the pixel
+ * @return true If the current x and y values are the same as the last ones
+ * @return false If the current x and y values are not the same as the last ones
+ */
 static bool	check_cycle(double x0, double y0, double *last_x, double *last_y)
 {
 	if (x0 == *last_x && y0 == *last_y)
@@ -42,19 +62,27 @@ static bool	check_cycle(double x0, double y0, double *last_x, double *last_y)
 	return (false);
 }
 
+/**
+ * @brief Calculates the number of iterations needed to escape the julia set
+ *
+ * @param x0 The x coordinate of the pixel
+ * @param y0 The y coordinate of the pixel
+ * @param data The data struct
+ * @return double The number of iterations needed to escape the julia set
+ */
 double	iter_julia(double x0, double y0, t_data *data)
 {
 	double	iteration;
 	double	last_x;
 	double	last_y;
 	double	mag_sq;
-	double	max_iter;
 
-	max_iter = calculate_iterations(data);
+	// double	max_iter;
+	// max_iter = calculate_iterations(data);
 	iteration = -1;
 	last_x = x0;
 	last_y = y0;
-	while (iteration++ < max_iter)
+	while (iteration++ < MAX_ITER)
 	{
 		mag_sq = x0 * x0 + y0 * y0;
 		if (mag_sq > 4.0)

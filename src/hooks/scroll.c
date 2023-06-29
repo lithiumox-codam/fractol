@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 00:37:00 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/05/27 23:49:50 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/29 14:37:52 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 {
 	t_data	*data;
 
+	(void)xdelta;
 	data = (t_data *)param;
 	if (ydelta > 0)
 		data->zoom.factor = 1.1;

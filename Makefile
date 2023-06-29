@@ -1,11 +1,11 @@
 NAME = fractol
-SRC = main utils/init hooks/keys utils/zoom sets/mandelbrot/index utils/color hooks/scroll sets/mandelbrot/utils utils/render sets/julia/index sets/julia/utils
+SRC = main utils/init hooks/keys utils/zoom sets/mandelbrot/index utils/color hooks/scroll sets/mandelbrot/utils utils/render sets/julia/index sets/julia/utils utils/error
 SRCS = $(addsuffix .c, $(addprefix src/, $(SRC)))
 OBJS = $(patsubst src/%.c, build/%.o, $(SRCS))
 MLX = MLX42/build/libmlx42.a
 LIBFT = libft/libft.a
 
-CODAM_FLAGS = -Wall -Wextra -Werror -g -o3 -mavx
+CODAM_FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LIBS = MLX42/build/libmlx42.a libft/libft.a
 INCLUDES = -I $(CURDIR)/incl -I MLX42/include -I $(CURDIR)/libft
 
@@ -35,7 +35,7 @@ $(NAME): $(MLX) $(LIBFT) $(OBJS)
 build/%.o: src/%.c incl/fractol.h
 	@tput reset
 	@mkdir -p $(@D)
-	@gcc $(INCLUDES) -c $< -o $@
+	@gcc $(INCLUDES) $(CODAM_FLAGS) -c $< -o $@
 
 $(MLX):
 	@echo "$(COLOR_INFO)$(EMOJI_INFO)  Initializing submodules...$(COLOR_RESET)"

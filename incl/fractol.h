@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 00:43:47 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 13:18:29 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/29 22:12:41 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@
 
 # define WIDTH 1080
 # define HEIGHT 720
-# define MAX_ITER 200
+# define MAX_ITER 500
 # define MAX_FRAME_WAIT 20
+
+// make a typedef for a long double so its called t_ld instead of long double
+typedef long double	t_ld;
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
@@ -35,28 +38,28 @@
 /**
  * Generic
  */
-void	err(char *str, t_data *data);
-t_data	init(t_data *data, char **av, int ac);
-void	zoom(t_data *data);
+void				err(char *str, t_data *data);
+t_data				init(t_data *data, char **av, int ac);
+void				zoom(t_data *data);
 
-void	init_color_palette(t_data *data);
+void				init_color_palette(t_data *data);
 /**
  *  Hooks
 */
-void	key_hook(mlx_key_data_t kd, void *param);
-void	render(void *param);
-void	scroll_hook(double xdelta, double ydelta, void *param);
+void				key_hook(mlx_key_data_t kd, void *param);
+void				render(void *param);
+void				scroll_hook(double xdelta, double ydelta, void *param);
 
 /**
  * Mandelbrot
 */
-void	mandelbrot(t_data *data);
-double	iter_mandel(double x0, double y0, t_data *data);
+void				mandelbrot(t_data *data);
+double				iter_mandel(double x0, double y0, t_data *data);
 
 /**
  * Julia
 */
-void	julia(t_data *data);
-double	iter_julia(double x0, double y0, t_data *data);
+void				julia(t_data *data);
+double				iter_julia(double x0, double y0, t_data *data);
 
 #endif
