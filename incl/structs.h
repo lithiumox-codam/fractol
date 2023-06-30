@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 00:41:13 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 12:36:46 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/30 11:40:55 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,6 @@
 # define STRUCTS_H
 
 # include <fractol.h>
-
-/**
- * @brief Colors used in the fractals
- *
- * RGB values are stored in an array of 3 ints
- * @param R Red
- * @param G Green
- * @param B Blue
- */
-typedef enum e_colors
-{
-	R,
-	G,
-	B
-}				t_colors;
 
 /**
  * @brief The fractal sets
@@ -82,8 +67,14 @@ typedef struct s_mouse
 }				t_mouse;
 
 /**
- * @brief The renderer struct
- *
+ * @brief
+ * 
+ * This struct is used to track changes in the fractal. If there has been a
+ * change, the fractal will be rendered again. This is to prevent the fractal
+ * from being rendered every frame.
+ * 
+ * @example If the user changes the color, the fractal will be rendered again
+ * 
  * @param frames The number of frames to wait before rendering
  * @param changed Whether there has been a change by the user
  */
@@ -112,7 +103,6 @@ typedef struct s_complex
  * @param img The image struct
  * @param frctl The fractal to be drawn
  * @param iter The maximum number of iterations
- * @param color The color to be used
  * @param x Struct containing the x range
  * @param y Struct containing the y range
  * @param c The complex number (used in julia set)
@@ -127,7 +117,6 @@ typedef struct s_data
 	mlx_image_t	*img;
 	t_sets		frctl;
 	u_int32_t	iter;
-	t_colors	color[3];
 	t_cords		x;
 	t_cords		y;
 	t_complex	complex;

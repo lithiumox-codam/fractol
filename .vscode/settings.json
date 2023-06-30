@@ -1,6 +1,4 @@
 {
-	"files.associations": {
-		"*.h": "c",
-		"ostream": "c"
-	}
+	"cmake.sourceDirectory": "/Users/lithium/Projects/Codam/fractol/MLX42",
+	"cmake.configureOnOpen": false
 }

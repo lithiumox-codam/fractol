@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:05:58 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/19 15:06:46 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/30 02:29:31 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,13 @@ static bool	in_bulb(double x0, double y0)
 	double	q;
 	double	p;
 	double	x_shifted;
-	double	x1;
 
 	q = (x0 - 0.25) * (x0 - 0.25) + y0 * y0;
-	p = sqrt(q);
-	if (x0 < p - 2 * q + 0.25)
+	p = q * (q + (x0 - 0.25));
+	if (p < 0.25 * y0 * y0)
 		return (true);
 	x_shifted = x0 + 1.0;
 	if (x_shifted * x_shifted + y0 * y0 < 1.0 / 16.0)
-		return (true);
-	x1 = x0 + 1.31;
-	if (x1 * x1 + y0 * y0 < (1.0 / 16.0) * 0.03)
 		return (true);
 	return (false);
 }

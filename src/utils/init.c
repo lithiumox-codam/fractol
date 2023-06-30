@@ -6,18 +6,11 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 22:11:16 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/06/30 02:14:34 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-// calculate the real and imaginary part of the complex number from a constant provided by the user in the form of an integer
-static double	calculate_complex(int t_data data)
-{
-	data.complex.i =
-	data.complex.r = 0;
-}
 
 static void	construct(t_data *data)
 {
