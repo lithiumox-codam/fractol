@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 02:00:56 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 18:27:27 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 23:23:13 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	init_color_palette(t_data *data)
 	while (i < 256)
 	{
 		t = (double)i / (256 / 2);
-		r = (int)(9 * (1 - t) * t * t * t * 255);
-		g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-		b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+		r = (int)(data->color.r_o * (1 - t) * t * t * t * 255);
+		g = (int)(data->color.g_o * (1 - t) * (1 - t) * t * t * 255);
+		b = (int)(data->color.b_o * (1 - t) * (1 - t) * (1 - t) * t * 255);
 		data->palette[i] = (r << 24) | (g << 16) | (b << 8) | 255;
 		i++;
 	}

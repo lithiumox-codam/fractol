@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 00:37:00 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 16:00:51 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 23:16:14 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,18 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 {
 	t_data	*data;
 
-	(void)xdelta;
 	data = (t_data *)param;
+	if (data->frctl == JULIA && mlx_is_key_down(data->mlx, MLX_KEY_LEFT_SHIFT))
+	{
+		data->complex.i += xdelta / 1000;
+		data->complex.r += xdelta / 1000;
+		data->renderer.changed = true;
+		return ;
+	}
 	if (ydelta > 0)
 		data->zoom.factor = 1.1;
 	else
 		data->zoom.factor = 1 / 1.1;
-	data->zoom.level += data->zoom.factor - 1;
 	update_mouse_pos(data);
 	zoom(data);
 	data->renderer.changed = true;

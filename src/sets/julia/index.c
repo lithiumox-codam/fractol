@@ -6,12 +6,21 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 01:18:50 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 12:29:40 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 21:20:19 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+/**
+ * @brief A function that maps a value to a range
+ * 
+ * @param x The value to map
+ * @param min The minimum value of the range
+ * @param max The maximum value of the range
+ * @param cords Coordinates of the range to map to
+ * @return double The mapped value
+ */
 static double	map_to_range(int x, int min, int max, t_cords cords)
 {
 	double	percentage;

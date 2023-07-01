@@ -6,11 +6,19 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:05:58 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 18:30:46 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/02 00:58:19 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
+
+typedef struct s_img
+{
+	int			x;
+	int			y;
+	double		x0;
+	double		y0;
+}				t_img;
 
 static bool	in_bulb(double x0, double y0)
 {
@@ -37,32 +45,29 @@ static double	map_to_range(double value, double in_min, double in_max,
 
 void	mandelbrot(t_data *d)
 {
-	int		img_x;
-	int		img_y;
-	double	x0;
-	double	y0;
+	t_img	img;
 
-	img_x = 0;
-	while (img_x < WIDTH)
+	img.x = 0;
+	while (img.x < WIDTH)
 	{
-		img_y = 0;
-		while (img_y < HEIGHT)
+		img.y = 0;
+		while (img.y < HEIGHT)
 		{
-			x0 = map_to_range(img_x, 0, WIDTH, d->x);
-			y0 = map_to_range(img_y, 0, HEIGHT, d->y);
-			if (!in_bulb(x0, y0))
+			img.x0 = map_to_range(img.x, 0, WIDTH, d->x);
+			img.y0 = map_to_range(img.y, 0, HEIGHT, d->y);
+			if (in_bulb(img.x0, img.y0))
 			{
-				d->iter = iter_mandel(x0, y0, d);
-				if (d->iter < MAX_ITER)
-					mlx_put_pixel(d->img, img_x, img_y, d->palette[d->iter
-							% 256]);
-				else
-					mlx_put_pixel(d->img, img_x, img_y, d->palette[0]);
+				mlx_put_pixel(d->img, img.x, img.y, d->palette[0]);
+				img.y++;
+				continue ;
 			}
+			d->iter = iter_mandel(img.x0, img.y0);
+			if (d->iter < MAX_ITER)
+				mlx_put_pixel(d->img, img.x, img.y, d->palette[d->iter % 256]);
 			else
-				mlx_put_pixel(d->img, img_x, img_y, d->palette[0]);
-			img_y++;
+				mlx_put_pixel(d->img, img.x, img.y, d->palette[0]);
+			img.y++;
 		}
-		img_x++;
+		img.x++;
 	}
 }

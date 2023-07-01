@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 02:31:11 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/19 15:06:35 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 22:17:39 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,48 +66,23 @@ static bool	check_cycle(double x, double y, double *last_x, double *last_y)
 }
 
 /**
- * @brief Calculates the iterations for the current x and y
- * 
- * It will iterate until the max iterations are reached or the cycle is found.
- * By using the data struct it will calculate the iterations based 
- * on the zoom level
- * @param data The data struct
- * @return double The amount of iterations
- */
-static double	calculate_iterations(t_data *data)
-{
-	double	zoom_level;
-	double	iterations;
-
-	zoom_level = data->zoom.level;
-	if (zoom_level < 1)
-		zoom_level = 1;
-	iterations = MAX_ITER * (1 + log(zoom_level));
-	if (iterations > MAX_ITER * 4)
-		iterations = MAX_ITER * 4;
-	return (iterations);
-}
-
-/**
  * @brief Iterates over the current x and y
  * 
  * @param d A struct containing the x, y, x0 and y0 values
  * @param data The data struct
  * @return double The amount of iterations
  */
-static double	iterate_while_loop(t_local d, t_data *data)
+static double	iterate_while_loop(t_local d)
 {
 	double	iteration;
 	double	last_x;
 	double	last_y;
 	double	mag_sq;
-	double	max_iter;
 
-	max_iter = calculate_iterations(data);
 	iteration = -1;
 	last_x = 0.0;
 	last_y = 0.0;
-	while (iteration++ < max_iter)
+	while (iteration++ < MAX_ITER)
 	{
 		mag_sq = d.x * d.x + d.y * d.y;
 		if (mag_sq > 4.0)
@@ -129,7 +104,7 @@ static double	iterate_while_loop(t_local d, t_data *data)
  * @param data  The data struct
  * @return double The amount of iterations
  */
-double	iter_mandel(double x0, double y0, t_data *data)
+double	iter_mandel(double x0, double y0)
 {
 	t_local	d;
 
@@ -137,5 +112,5 @@ double	iter_mandel(double x0, double y0, t_data *data)
 	d.y = 0.0;
 	d.x0 = x0;
 	d.y0 = y0;
-	return (iterate_while_loop(d, data));
+	return (iterate_while_loop(d));
 }

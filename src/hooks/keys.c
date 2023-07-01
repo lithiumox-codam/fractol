@@ -6,25 +6,11 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/14 22:08:09 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 16:00:03 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 23:31:51 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-/**
- * @brief Check if the action is a press
- *
- * @param action The action to check
- * @return true When the action is a press
- * @return false When the action is a release
- */
-static bool	press(action_t action)
-{
-	if (action == MLX_PRESS)
-		return (true);
-	return (false);
-}
 
 /**
  * @brief Move the fractal in the x direction
@@ -72,23 +58,15 @@ static void	move_y(t_data *data, double amount)
 	data->y.max += amount * movement_factor;
 }
 
-/**
- * @brief Wrapper for the wasd & arrow keys
- *
- * @param kd The key data
- * @return int The direction to move in
- */
-static int	wasd_arrow(mlx_key_data_t kd)
+static void	reset_cords(t_data *data)
 {
-	if (kd.key == MLX_KEY_W || kd.key == MLX_KEY_UP)
-		return (1);
-	if (kd.key == MLX_KEY_S || kd.key == MLX_KEY_DOWN)
-		return (2);
-	if (kd.key == MLX_KEY_D || kd.key == MLX_KEY_RIGHT)
-		return (3);
-	if (kd.key == MLX_KEY_A || kd.key == MLX_KEY_LEFT)
-		return (4);
-	return (0);
+	data->x.min = -2.5;
+	data->x.max = 1.5;
+	data->y.min = -1.5;
+	data->y.max = 1.5;
+	data->zoom.factor = 1;
+	data->zoom.x = 0;
+	data->zoom.y = 0;
 }
 
 /**
@@ -101,23 +79,26 @@ void	key_hook(mlx_key_data_t kd, void *param)
 {
 	t_data	*data;
 
+	(void)kd;
 	data = (t_data *)param;
-	if (wasd_arrow(kd) == 1 && press(kd.action))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_UP))
 		move_y(data, -0.1);
-	if (wasd_arrow(kd) == 2 && press(kd.action))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN))
 		move_y(data, 0.1);
-	if (wasd_arrow(kd) == 3 && press(kd.action))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		move_x(data, 0.1);
-	if (wasd_arrow(kd) == 4 && press(kd.action))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 		move_x(data, -0.1);
-	if (kd.key == MLX_KEY_ESCAPE && press(kd.action))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
-	if (kd.key == MLX_KEY_TAB && press(kd.action))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_TAB))
 	{
 		if (data->frctl == JULIA)
 			data->frctl = MANDELBROT;
 		else
 			data->frctl = JULIA;
 	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_R))
+		reset_cords(data);
 	data->renderer.changed = true;
 }

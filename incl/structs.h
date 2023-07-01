@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 00:41:13 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/30 11:40:55 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 23:21:51 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ typedef enum e_sets
 	JULIA
 }				t_sets;
 
+/**
+ * @brief The color offset struct
+ * 
+ * @param r_o The red offset
+ * @param g_o The green offset
+ * @param b_o The blue offset
+ */
+typedef struct s_color
+{
+	double		r_o;
+	double		g_o;
+	double		b_o;
+}				t_color;
 /**
  * @brief The coordinates of a point
  *
@@ -123,6 +136,7 @@ typedef struct s_data
 	t_zoom		zoom;
 	t_mouse		mouse;
 	t_renderer	renderer;
+	t_color		color;
 	uint32_t	palette[256];
 }				t_data;
 

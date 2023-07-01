@@ -1,5 +1,5 @@
 NAME = fractol
-SRC = main utils/init hooks/keys utils/zoom sets/mandelbrot/index utils/color hooks/scroll sets/mandelbrot/utils utils/render sets/julia/index sets/julia/utils utils/error
+SRC = main utils/init hooks/keys utils/zoom sets/mandelbrot/index utils/color hooks/scroll sets/mandelbrot/utils utils/render sets/julia/index sets/julia/utils utils/error hooks/close
 SRCS = $(addsuffix .c, $(addprefix src/, $(SRC)))
 OBJS = $(patsubst src/%.c, build/%.o, $(SRCS))
 MLX = MLX42/build/libmlx42.a
