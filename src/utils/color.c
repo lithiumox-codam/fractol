@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 02:00:56 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 16:02:13 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 18:27:27 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_color_palette(t_data *data)
 	int		b;
 
 	i = 1;
-	data->palette[0] = 0x000000;
+	data->palette[0] = 0xAA;
 	while (i < 256)
 	{
 		t = (double)i / (256 / 2);

@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 15:55:09 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 18:37:45 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ static void	parse_argv(int ac, char **av, t_data *data)
 		err("Usage -> ./fractol [fractal] [constant (optional)]", data);
 	if (ft_strcmp(av[1], "mandelbrot") == 0 && ac == 2)
 		data->frctl = MANDELBROT;
-	else if (ft_strcmp(av[1], "julia") == 0 && ac == 3)
+	else if (ft_strcmp(av[1], "julia") == 0 && ac == 4)
 	{
 		data->frctl = JULIA;
 		data->complex.r = ft_atod(av[2]);
 		data->complex.i = ft_atod(av[3]);
+		if (data->complex.r < -2 && data->complex.r > 2 && data->complex.i > 2
+			&& data->complex.i < -2)
+			err("Invalid constant please provide a number between -2 & 2",
+				data);
 	}
 	else
 		err("Usage: ./fractol [fractal] [constant (optional)]", data);
