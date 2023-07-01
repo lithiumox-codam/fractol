@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/30 02:14:34 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 15:55:09 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ static void	construct(t_data *data)
 	data->x.max = 1.5;
 	data->y.min = -1.5;
 	data->y.max = 2.0;
-	data->color[R] = 1;
-	data->color[G] = 1;
-	data->color[B] = 1;
 	data->zoom.factor = 1.0;
 	data->zoom.level = 3;
 	data->renderer.changed = true;

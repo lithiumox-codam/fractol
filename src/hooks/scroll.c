@@ -6,12 +6,17 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 00:37:00 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 14:37:52 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 16:00:51 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+/**
+ * @brief Function to update the mouse position so the zoom can be centered
+ *
+ * @param data The data struct
+ */
 static void	update_mouse_pos(t_data *data)
 {
 	int32_t	x;
@@ -30,6 +35,13 @@ static void	update_mouse_pos(t_data *data)
 	data->mouse.y = y;
 }
 
+/**
+ * @brief Zoom in or out on the fractal
+ *
+ * @param xdelta The amount to zoom in the x direction
+ * @param ydelta The amount to zoom in the y direction
+ * @param param The data struct
+ */
 void	scroll_hook(double xdelta, double ydelta, void *param)
 {
 	t_data	*data;

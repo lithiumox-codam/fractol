@@ -6,12 +6,19 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 02:00:56 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/18 23:40:49 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 16:02:13 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+/**
+ * @brief Initialize the color palette
+ *
+ * by using the formula from https://krazydad.com/tutorials/makecolors.php
+ *
+ * @param data The data struct
+ */
 void	init_color_palette(t_data *data)
 {
 	int		i;

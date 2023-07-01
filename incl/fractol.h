@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 00:43:47 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 22:12:41 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 16:03:28 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WIDTH 1080
 # define HEIGHT 720
 # define MAX_ITER 500
-# define MAX_FRAME_WAIT 20
+# define FRAME_WAIT 20
 
 // make a typedef for a long double so its called t_ld instead of long double
 typedef long double	t_ld;

@@ -6,12 +6,19 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/14 22:08:09 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 12:35:06 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/01 16:00:03 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+/**
+ * @brief Check if the action is a press
+ *
+ * @param action The action to check
+ * @return true When the action is a press
+ * @return false When the action is a release
+ */
 static bool	press(action_t action)
 {
 	if (action == MLX_PRESS)
@@ -19,6 +26,15 @@ static bool	press(action_t action)
 	return (false);
 }
 
+/**
+ * @brief Move the fractal in the x direction
+ *
+ * and limit it to the range of the fractal so when zoomed in
+ * the fractal is less likely to move out of view
+ *
+ * @param data The data struct
+ * @param amount The amount to move
+ */
 static void	move_x(t_data *data, double amount)
 {
 	double	movement_factor;
@@ -33,6 +49,15 @@ static void	move_x(t_data *data, double amount)
 	data->x.max += amount * movement_factor;
 }
 
+/**
+ * @brief Move the fractal in the y direction
+ *
+ * and limit it to the range of the fractal so when zoomed in
+ * the fractal is less likely to move out of view
+ *
+ * @param data The data struct
+ * @param amount The amount to move
+ */
 static void	move_y(t_data *data, double amount)
 {
 	double	movement_factor;
@@ -47,6 +72,12 @@ static void	move_y(t_data *data, double amount)
 	data->y.max += amount * movement_factor;
 }
 
+/**
+ * @brief Wrapper for the wasd & arrow keys
+ *
+ * @param kd The key data
+ * @return int The direction to move in
+ */
 static int	wasd_arrow(mlx_key_data_t kd)
 {
 	if (kd.key == MLX_KEY_W || kd.key == MLX_KEY_UP)
@@ -60,6 +91,12 @@ static int	wasd_arrow(mlx_key_data_t kd)
 	return (0);
 }
 
+/**
+ * @brief The key hook
+ *
+ * @param kd The key data
+ * @param param The data struct
+ */
 void	key_hook(mlx_key_data_t kd, void *param)
 {
 	t_data	*data;
