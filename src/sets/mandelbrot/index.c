@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:05:58 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 00:58:19 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/02 18:32:15 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	mandelbrot(t_data *d)
 			}
 			d->iter = iter_mandel(img.x0, img.y0);
 			if (d->iter < MAX_ITER)
-				mlx_put_pixel(d->img, img.x, img.y, d->palette[d->iter % 256]);
+				mlx_put_pixel(d->img, img.x, img.y, d->palette[d->iter
+						% MAX_ITER]);
 			else
 				mlx_put_pixel(d->img, img.x, img.y, d->palette[0]);
 			img.y++;

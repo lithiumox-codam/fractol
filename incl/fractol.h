@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 00:43:47 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 17:11:19 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/02 18:25:56 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 
 # include "../libft/libft.h"
 # include "MLX42/MLX42.h"
+# include "frctl_config.h"
 # include "structs.h"
 # include <math.h>
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-# define WIDTH 1080
-# define HEIGHT 720
-# define MAX_ITER 2000
-# define FRAME_WAIT 10
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"

@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 17:28:11 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/02 18:06:03 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	construct(t_data *data)
 static void	parse_argv(int ac, char **av, t_data *data)
 {
 	if (ac == 1)
-		throw_err("Usage -> ./fractol [fractal] [i] [r]", data);
+		throw_err("Usage -> ./fractol [fractal] [r] [i]", data);
 	if (ft_strcmp(av[1], "mandelbrot") == 0 && ac == 2)
 		data->frctl = MANDELBROT;
 	else if (ft_strcmp(av[1], "julia") == 0 && ac == 4)
@@ -47,7 +47,7 @@ static void	parse_argv(int ac, char **av, t_data *data)
 			throw_err("Please provide numbers between -2 & 2", data);
 	}
 	else
-		throw_err("Usage: ./fractol [fractal] (ci) (cr)", data);
+		throw_err("Usage: ./fractol [fractal] [r] [i]", data);
 	construct(data);
 	init_color_palette(data);
 }

@@ -6,13 +6,14 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 00:41:13 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 23:21:51 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/02 18:26:11 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include "frctl_config.h"
 # include <fractol.h>
 
 /**
@@ -29,7 +30,7 @@ typedef enum e_sets
 
 /**
  * @brief The color offset struct
- * 
+ *
  * @param r_o The red offset
  * @param g_o The green offset
  * @param b_o The blue offset
@@ -81,13 +82,13 @@ typedef struct s_mouse
 
 /**
  * @brief
- * 
+ *
  * This struct is used to track changes in the fractal. If there has been a
  * change, the fractal will be rendered again. This is to prevent the fractal
  * from being rendered every frame.
- * 
+ *
  * @example If the user changes the color, the fractal will be rendered again
- * 
+ *
  * @param frames The number of frames to wait before rendering
  * @param changed Whether there has been a change by the user
  */
@@ -137,7 +138,7 @@ typedef struct s_data
 	t_mouse		mouse;
 	t_renderer	renderer;
 	t_color		color;
-	uint32_t	palette[256];
+	uint32_t	palette[MAX_ITER];
 }				t_data;
 
 #endif

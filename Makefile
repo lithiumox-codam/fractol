@@ -33,13 +33,13 @@ $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@sleep 0.5
 	@printf "✅\n"
 
-build/%.o: src/%.c incl/fractol.h
+build/%.o: src/%.c incl/fractol.h incl/frctl_config.h incl/structs.h
 	@mkdir -p $(@D)
 	@gcc $(INCLUDES) $(CODAM_FLAGS) -c $< -o $@
 
 $(MLX):
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Initializing submodules...$(COLOR_RESET)\t"
-	@git submodule update --init --recursive
+	@git submodule update --init --recursive > /dev/null
 	@printf "✅\n"
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Building MLX42...$(COLOR_RESET)\t\t"
 	@cmake -S MLX42 -B MLX42/build -DGLFW_FETCH=1 > /dev/null
