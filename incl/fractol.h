@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 00:43:47 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 00:42:11 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/02 17:11:19 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define WIDTH 1080
 # define HEIGHT 720
-# define MAX_ITER 500
+# define MAX_ITER 2000
 # define FRAME_WAIT 10
 
 # define RED "\033[0;31m"

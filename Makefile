@@ -28,43 +28,51 @@ EMOJI_RUN = 🚀
 all: create_folders $(NAME)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
-	@echo "$(COLOR_INFO)$(EMOJI_INFO)  Compiling $(NAME)...$(COLOR_RESET)"
+	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Compiling $(NAME)...$(COLOR_RESET)\t"
 	@cc $(OBJS) $(LIBS) $(INCLUDES) $(LINKERS) $(CODAM_FLAGS) -o $(NAME)
-	@echo "$(COLOR_SUCCESS)$(EMOJI_SUCCESS)  Compilation completed!$(COLOR_RESET)"
+	@sleep 0.5
+	@printf "✅\n"
 
 build/%.o: src/%.c incl/fractol.h
-	@tput reset
 	@mkdir -p $(@D)
 	@gcc $(INCLUDES) $(CODAM_FLAGS) -c $< -o $@
 
 $(MLX):
-	@echo "$(COLOR_INFO)$(EMOJI_INFO)  Initializing submodules...$(COLOR_RESET)"
+	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Initializing submodules...$(COLOR_RESET)\t"
 	@git submodule update --init --recursive
-	@echo "$(COLOR_INFO)$(EMOJI_INFO)  Building MLX42...$(COLOR_RESET)"
+	@printf "✅\n"
+	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Building MLX42...$(COLOR_RESET)\t\t"
 	@cmake -S MLX42 -B MLX42/build -DGLFW_FETCH=1 > /dev/null
 	@cmake --build MLX42/build --parallel > /dev/null
-	@echo "$(COLOR_SUCCESS)$(EMOJI_SUCCESS)  MLX42 built successfully!$(COLOR_RESET)"
+	@sleep 0.5
+	@printf "✅\n"
+
+$(LIBFT):
+	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Building Libft...$(COLOR_RESET)\t\t"
 	@$(MAKE) -C libft > /dev/null
-	@echo "$(COLOR_SUCCESS)$(EMOJI_SUCCESS)  Libft built successfully!$(COLOR_RESET)"
+	@sleep 0.5
+	@printf "✅\n"
 
 create_folders:
 	@mkdir -p $(dir $(OBJS))
 
 clean:
-	@echo "$(COLOR_INFO)$(EMOJI_CLEAN)  Cleaning up...$(COLOR_RESET)"
+	@printf "$(COLOR_INFO)$(EMOJI_CLEAN)  Cleaning up...$(COLOR_RESET)\t\t"
 	@rm -rf MLX42/build
 	@$(MAKE) -C libft clean > /dev/null
 	@rm -rf build
-	@echo "$(COLOR_SUCCESS)$(EMOJI_SUCCESS)  Cleaned up!$(COLOR_RESET)"
+	@sleep 0.5
+	@printf "✅\n"
 
 fclean: clean
-	@echo "$(COLOR_INFO)$(EMOJI_CLEAN)  Removing executable...$(COLOR_RESET)"
+	@printf "$(COLOR_INFO)$(EMOJI_CLEAN)  Removing executable...$(COLOR_RESET)\t"
 	@$(MAKE) -C libft fclean > /dev/null
 	@rm -f $(NAME)
-	@echo "$(COLOR_SUCCESS)$(EMOJI_SUCCESS)  Executable removed!$(COLOR_RESET)"
+	@sleep 0.5
+	@printf "✅\n"
 
 run: $(NAME) $(MLX) $(LIBFT) $(OBJS)
-	@echo "$(COLOR_INFO)$(EMOJI_RUN)  Compiled and started $(NAME)...$(COLOR_RESET)"
+	@printf "$(COLOR_INFO)$(EMOJI_RUN)  Compiled and started $(NAME)...$(COLOR_RESET)"
 	@./$(NAME) 1
 
 norm:

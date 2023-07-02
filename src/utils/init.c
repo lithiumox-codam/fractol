@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 00:42:52 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/02 17:28:11 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	parse_argv(int ac, char **av, t_data *data)
 			throw_err("Please provide numbers between -2 & 2", data);
 	}
 	else
-		throw_err("Usage: ./fractol [fractal] [constant (optional)]", data);
+		throw_err("Usage: ./fractol [fractal] (ci) (cr)", data);
 	construct(data);
 	init_color_palette(data);
 }
