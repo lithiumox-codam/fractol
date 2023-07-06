@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 18:06:03 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/06 16:35:37 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	construct(t_data *data)
 {
-	data->x.min = -2.5;
-	data->x.max = 1.5;
-	data->y.min = -1.5;
-	data->y.max = 1.5;
+	data->x.min = -2;
+	data->x.max = 2;
+	data->y.min = -2;
+	data->y.max = 2;
 	data->zoom.factor = 1.0;
 	data->renderer.changed = true;
 	data->renderer.frames = FRAME_WAIT;

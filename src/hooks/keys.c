@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/14 22:08:09 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 23:31:51 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/06 17:08:10 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ static void	move_y(t_data *data, double amount)
 
 static void	reset_cords(t_data *data)
 {
-	data->x.min = -2.5;
-	data->x.max = 1.5;
-	data->y.min = -1.5;
-	data->y.max = 1.5;
+	data->x.min = -2;
+	data->x.max = 2;
+	data->y.min = -2;
+	data->y.max = 2;
 	data->zoom.factor = 1;
 	data->zoom.x = 0;
 	data->zoom.y = 0;

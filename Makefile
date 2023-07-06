@@ -5,7 +5,7 @@ OBJS = $(patsubst src/%.c, build/%.o, $(SRCS))
 MLX = MLX42/build/libmlx42.a
 LIBFT = libft/libft.a
 
-CODAM_FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CODAM_FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -flto -o3
 LIBS = MLX42/build/libmlx42.a libft/libft.a
 INCLUDES = -I $(CURDIR)/incl -I MLX42/include -I $(CURDIR)/libft
 

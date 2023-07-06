@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:18:06 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 22:51:18 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/06 17:29:47 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 void	throw_err(char *str, t_data *data)
 {
 	ft_printf("Error: %s\n", str);
+	mlx_close_window(data->mlx);
 	if (data->mlx)
 		mlx_terminate(data->mlx);
 	exit(1);
