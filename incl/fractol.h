@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 00:43:47 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/07 11:22:42 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 16:03:16 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include "structs.h"
 # include <math.h>
 # include <stdbool.h>
-# include <stddef.h>
-# include <stdlib.h>
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"

@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/07 11:11:35 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 16:09:18 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,31 @@ static void	construct(t_data *data)
 }
 
 /**
+ * @brief Counts the amount of dots in the string
+ *
+ * @param str The string to check
+ * @return true When there is only one dot
+ * @return false When there is more than one dot
+ */
+static bool	valid(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 1;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == '.' || str[i] == '-' || str[i] == '+')
+			count++;
+		i++;
+	}
+	if (count > 1)
+		return (true);
+	return (false);
+}
+
+/**
  * @brief Parses the arguments and sets the fractal
  *
  * @param ac The argument count
@@ -52,6 +77,8 @@ static void	parse_argv(int ac, char **av, t_data *data)
 	else if (ft_strcmp(av[1], "julia") == 0 && ac == 4)
 	{
 		data->frctl = JULIA;
+		if (valid(av[2]) || valid(av[3]))
+			throw_err("Please provide valid numbers", data);
 		data->complex.r = ft_atod(av[2]);
 		data->complex.i = ft_atod(av[3]);
 		if (data->complex.r < -2.0 || data->complex.r > 2.0
