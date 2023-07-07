@@ -6,11 +6,12 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/07 16:09:18 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/08 01:37:35 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
+#include <stdio.h>
 
 /**
  * @brief Constructs the data struct
@@ -81,6 +82,7 @@ static void	parse_argv(int ac, char **av, t_data *data)
 			throw_err("Please provide valid numbers", data);
 		data->complex.r = ft_atod(av[2]);
 		data->complex.i = ft_atod(av[3]);
+		printf("%f %f\n", data->complex.r, data->complex.i);
 		if (data->complex.r < -2.0 || data->complex.r > 2.0
 			|| data->complex.i > 2.0 || data->complex.i < -2.0)
 			throw_err("Please provide numbers between -2 & 2", data);

@@ -26,7 +26,7 @@ EMOJI_RUN = 🚀
 
 all: $(NAME)
 
-$(NAME): $(MLX) $(LIBFT) $(OBJS)
+$(NAME): submodule $(MLX) $(LIBFT) $(OBJS)
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Compiling $(NAME)...$(COLOR_RESET)\t"
 	@cc $(OBJS) $(LIBS) $(INCLUDES) $(LINKERS) $(CODAM_FLAGS) -o $@
 	@sleep 0.5
@@ -36,10 +36,12 @@ build/%.o: src/%.c incl/fractol.h incl/frctl_config.h incl/structs.h
 	@mkdir -p $(@D)
 	@gcc $(INCLUDES) $(CODAM_FLAGS) -c $< -o $@
 
-$(MLX):
+submodule:
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Initializing submodules...$(COLOR_RESET)\t"
 	@git submodule update --init --recursive > /dev/null
 	@printf "✅\n"
+
+$(MLX):
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Building MLX42...$(COLOR_RESET)\t\t"
 	@cmake -S MLX42 -B MLX42/build -DGLFW_FETCH=1 > /dev/null
 	@cmake --build MLX42/build --parallel > /dev/null
