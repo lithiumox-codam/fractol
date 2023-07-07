@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 15:00:19 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/29 22:16:43 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 10:30:16 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ double	iter_julia(double x0, double y0, t_data *data)
 	iteration = -1;
 	last_x = x0;
 	last_y = y0;
-	while (iteration++ < MAX_ITER)
+	while (iteration++ < ITER)
 	{
 		mag_sq = x0 * x0 + y0 * y0;
 		if (mag_sq > 4.0)
 			break ;
 		calculate_new_values(&x0, &y0, data->complex.r, data->complex.i);
 		if (check_cycle(x0, y0, &last_x, &last_y))
-			return (MAX_ITER);
+			return (ITER);
 	}
 	return (iteration);
 }

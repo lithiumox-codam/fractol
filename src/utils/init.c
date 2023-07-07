@@ -6,12 +6,17 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/06 16:35:37 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 11:11:35 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+/**
+ * @brief Constructs the data struct
+ *
+ * @param data The data struct
+ */
 static void	construct(t_data *data)
 {
 	data->x.min = -2;
@@ -31,6 +36,13 @@ static void	construct(t_data *data)
 	}
 }
 
+/**
+ * @brief Parses the arguments and sets the fractal
+ *
+ * @param ac The argument count
+ * @param av The argument list
+ * @param data The data struct
+ */
 static void	parse_argv(int ac, char **av, t_data *data)
 {
 	if (ac == 1)
@@ -47,11 +59,17 @@ static void	parse_argv(int ac, char **av, t_data *data)
 			throw_err("Please provide numbers between -2 & 2", data);
 	}
 	else
-		throw_err("Usage: ./fractol [fractal] [r] [i]", data);
+		throw_err("Usage -> ./fractol [fractal] [r] [i]", data);
 	construct(data);
 	init_color_palette(data);
 }
 
+/**
+ * @brief Starts mlx and create the image
+ *
+ * @param mlx The mlx pointer
+ * @param data The data struct
+ */
 static void	start_mlx(mlx_t *mlx, t_data *data)
 {
 	if (!mlx)
@@ -63,10 +81,16 @@ static void	start_mlx(mlx_t *mlx, t_data *data)
 		throw_err("mlx_new_image failed", data);
 }
 
-t_data	init(t_data *data, char **av, int ac)
+/**
+ * @brief The wrapper initialization function
+ *
+ * @param data The data struct
+ * @param av The arguments
+ * @param ac The amount of arguments
+ */
+void	init(t_data *data, char **av, int ac)
 {
 	ft_bzero(data, sizeof(t_data));
 	parse_argv(ac, av, data);
 	start_mlx(mlx_init(WIDTH, HEIGHT, "Fractol", true), data);
-	return (*data);
 }

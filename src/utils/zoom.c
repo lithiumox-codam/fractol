@@ -6,12 +6,19 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/14 22:13:49 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/06/18 02:07:00 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 10:45:45 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+/**
+ * @brief Update the range of the fractal
+ *
+ * @param range The range to update
+ * @param center The center of the range
+ * @param factor The factor to zoom in or out
+ */
 void	update_range(t_cords *range, double center, double factor)
 {
 	double	width;
@@ -25,11 +32,11 @@ void	update_range(t_cords *range, double center, double factor)
 
 /**
  * @brief Zoom in on the mouse position
- * 
+ *
  * I take the mouse position as a percentage of the screen width and height.
  * I then use that percentage to calculate the position of the mouse in the
  * fractal. I then use that position to zoom in on the fractal.
- * 
+ *
  * @param data The data struct
  */
 void	zoom(t_data *data)

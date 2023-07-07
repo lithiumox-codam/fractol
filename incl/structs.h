@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 00:41:13 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 18:26:11 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 10:30:16 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ typedef struct s_data
 	t_mouse		mouse;
 	t_renderer	renderer;
 	t_color		color;
-	uint32_t	palette[MAX_ITER];
+	uint32_t	palette[ITER];
 }				t_data;
 
 #endif

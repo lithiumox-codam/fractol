@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 00:43:47 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 18:25:56 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 11:22:42 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <math.h>
 # include <stdbool.h>
 # include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
 
 # define RED "\033[0;31m"
@@ -32,7 +31,7 @@
  * Generic
  */
 void	throw_err(char *str, t_data *data);
-t_data	init(t_data *data, char **av, int ac);
+void	init(t_data *data, char **av, int ac);
 void	zoom(t_data *data);
 void	init_color_palette(t_data *data);
 

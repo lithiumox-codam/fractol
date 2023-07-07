@@ -6,12 +6,15 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:05:58 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 18:32:15 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 10:41:31 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+/**
+ * @brief A local struct to store the x and y coordinates of the pixel
+ */
 typedef struct s_img
 {
 	int			x;
@@ -20,6 +23,14 @@ typedef struct s_img
 	double		y0;
 }				t_img;
 
+/**
+ * @brief A function that maps a value to a range
+ *
+ * @param x0 The x value to map
+ * @param y0 The y value to map
+ * @return true If the point is in the primary and secondary bulb
+ * @return false If the point is not in the primary and secondary bulb
+ */
 static bool	in_bulb(double x0, double y0)
 {
 	double	q;
@@ -36,6 +47,15 @@ static bool	in_bulb(double x0, double y0)
 	return (false);
 }
 
+/**
+ * @brief A function that maps a value to a range
+ *
+ * @param value The value to map
+ * @param in_min The minimum value of the range
+ * @param in_max The maximum value of the range
+ * @param out_range The range to map to
+ * @return double The mapped value
+ */
 static double	map_to_range(double value, double in_min, double in_max,
 		t_cords out_range)
 {
@@ -43,6 +63,11 @@ static double	map_to_range(double value, double in_min, double in_max,
 			- in_min) + out_range.min);
 }
 
+/**
+ * @brief The wrapper function for the mandelbrot set
+ *
+ * @param d The data struct
+ */
 void	mandelbrot(t_data *d)
 {
 	t_img	img;
@@ -62,9 +87,8 @@ void	mandelbrot(t_data *d)
 				continue ;
 			}
 			d->iter = iter_mandel(img.x0, img.y0);
-			if (d->iter < MAX_ITER)
-				mlx_put_pixel(d->img, img.x, img.y, d->palette[d->iter
-						% MAX_ITER]);
+			if (d->iter < ITER)
+				mlx_put_pixel(d->img, img.x, img.y, d->palette[d->iter % ITER]);
 			else
 				mlx_put_pixel(d->img, img.x, img.y, d->palette[0]);
 			img.y++;

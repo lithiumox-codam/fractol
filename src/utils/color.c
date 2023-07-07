@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 02:00:56 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/02 18:21:18 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 10:41:41 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief Initialize the color palette
  *
- * by using the formula from https://krazydad.com/tutorials/makecolors.php
+ * by using the formulas from https://krazydad.com/tutorials/makecolors.php
  *
  * @param data The data struct
  */
@@ -29,9 +29,9 @@ void	init_color_palette(t_data *data)
 
 	i = 1;
 	data->palette[0] = 0xAA;
-	while (i < MAX_ITER)
+	while (i < ITER)
 	{
-		t = (double)i / (MAX_ITER / 2);
+		t = (double)i / (ITER / 2);
 		r = (int)(data->color.r_o * (1 - t) * t * t * t * 255);
 		g = (int)(data->color.g_o * (1 - t) * (1 - t) * t * t * 255);
 		b = (int)(data->color.b_o * (1 - t) * (1 - t) * (1 - t) * t * 255);

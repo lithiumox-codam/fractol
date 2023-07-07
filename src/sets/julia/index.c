@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 01:18:50 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/06 16:32:59 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 10:39:44 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,17 @@ static double	map_to_range(int x, int min, int max, t_cords cords)
 	return (percentage * (cords.max - cords.min) + cords.min);
 }
 
+/**
+ * @brief The wrapper function for the julia set
+ *
+ * @param d The data struct
+ */
 void	julia(t_data *d)
 {
-	int img_x;
-	int img_y;
-	double x0;
-	double y0;
+	int		img_x;
+	int		img_y;
+	double	x0;
+	double	y0;
 
 	img_x = 0;
 	while (img_x < WIDTH)
@@ -47,7 +52,7 @@ void	julia(t_data *d)
 			x0 = map_to_range(img_x, 0, WIDTH, d->x);
 			y0 = map_to_range(img_y, 0, HEIGHT, d->y);
 			d->iter = iter_julia(x0, y0, d);
-			mlx_put_pixel(d->img, img_x, img_y, d->palette[d->iter % MAX_ITER]);
+			mlx_put_pixel(d->img, img_x, img_y, d->palette[d->iter % ITER]);
 			img_y++;
 		}
 		img_x++;

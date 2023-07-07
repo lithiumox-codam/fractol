@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 16:43:22 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/01 16:03:18 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/07 10:45:21 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ static void	determine_fractol(t_data *data)
 		julia(data);
 }
 
+/**
+ * @brief Render hook to determine which fractol to render.
+ * And checks if the fractol has actually changed by the user.
+ * Then waits for FRAME_WAIT frames before rendering again.
+ * @param param The data struct.
+ */
 void	render(void *param)
 {
 	t_data	*data;

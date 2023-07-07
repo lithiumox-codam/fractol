@@ -15,7 +15,6 @@ else ifeq ($(shell uname -m),x86_64)
 LINKERS = -lglfw3 -framework IOKit -framework Cocoa
 endif
 
-
 COLOR_INFO = \033[1;36m
 COLOR_SUCCESS = \033[1;32m
 COLOR_RESET = \033[0m
@@ -25,11 +24,11 @@ EMOJI_SUCCESS = 🎉
 EMOJI_CLEAN = 🧹
 EMOJI_RUN = 🚀
 
-all: create_folders $(NAME)
+all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Compiling $(NAME)...$(COLOR_RESET)\t"
-	@cc $(OBJS) $(LIBS) $(INCLUDES) $(LINKERS) $(CODAM_FLAGS) -o $(NAME)
+	@cc $(OBJS) $(LIBS) $(INCLUDES) $(LINKERS) $(CODAM_FLAGS) -o $@
 	@sleep 0.5
 	@printf "✅\n"
 
@@ -53,9 +52,6 @@ $(LIBFT):
 	@sleep 0.5
 	@printf "✅\n"
 
-create_folders:
-	@mkdir -p $(dir $(OBJS))
-
 clean:
 	@printf "$(COLOR_INFO)$(EMOJI_CLEAN)  Cleaning up...$(COLOR_RESET)\t\t"
 	@rm -rf MLX42/build
@@ -71,7 +67,7 @@ fclean: clean
 	@sleep 0.5
 	@printf "✅\n"
 
-run: $(NAME) $(MLX) $(LIBFT) $(OBJS)
+run: $(NAME)
 	@printf "$(COLOR_INFO)$(EMOJI_RUN)  Compiled and started $(NAME)...$(COLOR_RESET)"
 	@./$(NAME) 1
 
@@ -80,9 +76,9 @@ norm:
 
 re: fclean $(NAME)
 
+bonus: all
+
 module-update:
 	@git submodule update --remote --merge
 
-.PHONY: all clean fclean run re create_folders
-
-.SILENT: all $(NAME) mlx clean fclean run re create_folders
+.PHONY: all clean fclean run re module-update
