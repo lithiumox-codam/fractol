@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/08 01:37:35 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/08 14:08:40 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ static void	construct(t_data *data)
 }
 
 /**
- * @brief Counts the amount of dots in the string
+ * @brief Counts the amount of dots and -+ in the string (skips the first char)
  *
  * @param str The string to check
- * @return true When there is only one dot
- * @return false When there is more than one dot
+ * @return true When there is only one dot and no -+ in the string
+ * @return false When there is more than one dot or a -+ in the string
  */
 static bool	valid(char *str)
 {
@@ -82,7 +82,6 @@ static void	parse_argv(int ac, char **av, t_data *data)
 			throw_err("Please provide valid numbers", data);
 		data->complex.r = ft_atod(av[2]);
 		data->complex.i = ft_atod(av[3]);
-		printf("%f %f\n", data->complex.r, data->complex.i);
 		if (data->complex.r < -2.0 || data->complex.r > 2.0
 			|| data->complex.i > 2.0 || data->complex.i < -2.0)
 			throw_err("Please provide numbers between -2 & 2", data);

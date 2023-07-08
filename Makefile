@@ -26,32 +26,31 @@ EMOJI_RUN = 🚀
 
 all: $(NAME)
 
-$(NAME): submodule $(MLX) $(LIBFT) $(OBJS)
+$(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Compiling $(NAME)...$(COLOR_RESET)\t"
 	@cc $(OBJS) $(LIBS) $(INCLUDES) $(LINKERS) $(CODAM_FLAGS) -o $@
-	@sleep 0.5
+	@sleep 0.25
 	@printf "✅\n"
 
 build/%.o: src/%.c incl/fractol.h incl/frctl_config.h incl/structs.h
 	@mkdir -p $(@D)
 	@gcc $(INCLUDES) $(CODAM_FLAGS) -c $< -o $@
 
-submodule:
+$(MLX):
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Initializing submodules...$(COLOR_RESET)\t"
 	@git submodule update --init --recursive > /dev/null
+	@sleep 0.25
 	@printf "✅\n"
-
-$(MLX):
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Building MLX42...$(COLOR_RESET)\t\t"
 	@cmake -S MLX42 -B MLX42/build -DGLFW_FETCH=1 > /dev/null
 	@cmake --build MLX42/build --parallel > /dev/null
-	@sleep 0.5
+	@sleep 0.25
 	@printf "✅\n"
 
 $(LIBFT):
 	@printf "$(COLOR_INFO)$(EMOJI_INFO)  Building Libft...$(COLOR_RESET)\t\t"
 	@$(MAKE) -C libft > /dev/null
-	@sleep 0.5
+	@sleep 0.25
 	@printf "✅\n"
 
 clean:
@@ -59,14 +58,14 @@ clean:
 	@rm -rf MLX42/build
 	@$(MAKE) -C libft clean > /dev/null
 	@rm -rf build
-	@sleep 0.5
+	@sleep 0.25
 	@printf "✅\n"
 
 fclean: clean
 	@printf "$(COLOR_INFO)$(EMOJI_CLEAN)  Removing executable...$(COLOR_RESET)\t"
 	@$(MAKE) -C libft fclean > /dev/null
 	@rm -f $(NAME)
-	@sleep 0.5
+	@sleep 0.25
 	@printf "✅\n"
 
 run: $(NAME)
