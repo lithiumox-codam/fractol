@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 02:00:56 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/07 10:41:41 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/08 14:25:22 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ void	init_color_palette(t_data *data)
 		data->palette[i] = (r << 24) | (g << 16) | (b << 8) | 255;
 		i++;
 	}
+}
+
+/**
+ * @brief Color pallete offset shifting and calls the init palette again
+ *
+ * @param data The data struct
+ */
+void	shift_palette(t_data *data)
+{
+	data->color.r_o += 0.5;
+	data->color.g_o += 0.5;
+	data->color.b_o += 0.5;
+	init_color_palette(data);
 }

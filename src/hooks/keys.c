@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/14 22:08:09 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/06 17:08:10 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/08 14:26:19 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,16 @@ static void	reset_cords(t_data *data)
 	data->zoom.factor = 1;
 	data->zoom.x = 0;
 	data->zoom.y = 0;
+	data->color.r_o = 9;
+	data->color.g_o = 15;
+	data->color.b_o = 8.5;
+	init_color_palette(data);
+}
+
+void	extra_keys(t_data *data)
+{
+	if (mlx_is_key_down(data->mlx, MLX_KEY_SPACE))
+		shift_palette(data);
 }
 
 /**
@@ -100,5 +110,6 @@ void	key_hook(mlx_key_data_t kd, void *param)
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_R))
 		reset_cords(data);
+	extra_keys(data);
 	data->renderer.changed = true;
 }

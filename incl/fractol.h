@@ -6,7 +6,7 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 00:43:47 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/07 16:03:16 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/08 14:18:51 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	throw_err(char *str, t_data *data);
 void	init(t_data *data, char **av, int ac);
 void	zoom(t_data *data);
 void	init_color_palette(t_data *data);
+void	shift_palette(t_data *data);
 
 /**
  *  Hooks

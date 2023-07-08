@@ -6,12 +6,11 @@
 /*   By: mdekker <mdekker@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/13 18:44:45 by mdekker       #+#    #+#                 */
-/*   Updated: 2023/07/08 14:08:40 by mdekker       ########   odam.nl         */
+/*   Updated: 2023/07/08 14:24:03 by mdekker       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-#include <stdio.h>
 
 /**
  * @brief Constructs the data struct
